@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>Windows 11 — Yoann Bonkoungou</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230078d4' width='48' height='48'/><rect fill='%230078d4' x='52' width='48' height='48'/><rect fill='%230078d4' y='52' width='48' height='48'/><rect fill='%230078d4' x='52' y='52' width='48' height='48'/></svg>"/>
+<link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+<div id="boot">
+<svg class="boot-logo" viewBox="0 0 100 100"><rect fill="#0078d4" width="47" height="47"/><rect fill="#0078d4" x="53" width="47" height="47"/><rect fill="#0078d4" y="53" width="47" height="47"/><rect fill="#0078d4" x="53" y="53" width="47" height="47"/></svg>
+<div class="boot-bar"><div></div></div>
+</div>
+<div id="wallpaper"><canvas id="wpCanvas"></canvas></div>
+<div id="desktop"></div>
+<div id="widgets">
+<h3>Widgets</h3>
+<div class="widget-card" id="wClock"></div>
+<div class="widget-card">Créateur : Yoann Bonkoungou</div>
+<div class="widget-card">Windows 11 Pro Web · 24H2</div>
+<div class="widget-card" style="border:1px solid #22c55e;color:#22c55e">✓ Version gratuite<br/>Créateur : <b>Yoann Bonkoungou</b></div>
+<div class="widget-card" style="border:1px solid #60cdff;color:#60cdff">🚀 Mise à jour bientôt<br/>Une nouvelle version arrivera prochainement de la part de <b>Yoann Bonkoungou</b></div>
+</div>
+<div id="taskbar">
+<div class="tb-left"><button class="tb-btn" id="widgetsBtn" title="Widgets">📊</button></div>
+<div class="tb-center">
+<button class="tb-btn" id="startBtn" title="Demarrer"><svg width="18" height="18" viewBox="0 0 100 100"><rect fill="#fff" width="47" height="47"/><rect fill="#fff" x="53" width="47" height="47"/><rect fill="#fff" y="53" width="47" height="47"/><rect fill="#fff" x="53" y="53" width="47" height="47"/></svg></button>
+<button class="tb-btn" data-app="explorer" title="Explorateur">📁</button>
+<button class="tb-btn" data-app="browser" title="Edge"><span class="brand-ico b-edge" style="width:22px;height:22px;font-size:10px">e</span></button>
+<button class="tb-btn" data-app="vscode" title="VS Code"><span class="brand-ico b-code" style="width:22px;height:22px;font-size:9px">VS</span></button>
+<button class="tb-btn" data-app="word" title="Word"><span class="brand-ico b-word" style="width:22px;height:22px;font-size:11px">W</span></button>
+<button class="tb-btn" data-app="excel" title="Excel"><span class="brand-ico b-excel" style="width:22px;height:22px;font-size:11px">X</span></button>
+<button class="tb-btn" data-app="powerpoint" title="PowerPoint"><span class="brand-ico b-ppt" style="width:22px;height:22px;font-size:11px">P</span></button>
+<button class="tb-btn" data-app="ai" title="IA">🤖</button>
+<button class="tb-btn" data-app="settings" title="Parametres">⚙️</button>
+</div>
+<div class="tb-right">
+<button class="tb-btn" id="notifBtn" title="Notifications" style="position:relative">🔔<span class="notif-badge" id="notifBadge">0</span></button>
+<div id="clock"></div>
+</div>
+</div>
+<div id="notifCenter">
+<div class="notif-header"><span>Notifications</span><button class="tb-btn" id="notifClear" style="width:auto;padding:0 8px;font-size:11px;color:var(--muted)">Tout effacer</button></div>
+<div class="notif-list" id="notifList"><div class="notif-empty">Aucune notification</div></div>
+</div>
+<div id="startMenu">
+<input class="start-search" placeholder="Rechercher..." id="startSearch"/>
+<div class="start-body">
+<div class="start-side">
+<button onclick="openApp('settings');closeStart()" title="Parametres">⚙️</button>
+<button onclick="openApp('explorer');closeStart()" title="Fichiers">📁</button>
+<button onclick="openApp('vscode');closeStart()" title="Code">💻</button>
+<button onclick="showPaywall()" title="Abonnement">💎</button>
+</div>
+<div class="start-pinned"><h3>Epingle</h3><div class="pinned-grid" id="pinnedGrid"></div></div>
+</div>
+<div class="start-footer">
+<div class="user-info" onclick="openApp('settings')"><div class="avatar">YB</div><span>Yoann Bonkoungou</span></div>
+<button class="tb-btn" onclick="toast('Session verrouillee')" title="Verrouiller">🔒</button>
+</div>
+</div>
+<div id="paywall" class="hidden">
+<div class="pay-card" style="max-width:420px">
+<div style="font-size:42px;margin-bottom:8px">✓</div>
+<h2 style="color:#22c55e">Version gratuite</h2>
+<p style="color:var(--muted);font-size:13px;margin:8px 0 12px;line-height:1.45">
+Toutes les applications sont <strong style="color:#fff">débloquées</strong>.<br/>
+Créateur : <strong style="color:#fff">Yoann Bonkoungou</strong>
+</p>
+<div class="pay-info" style="text-align:center;margin-bottom:14px">
+<span class="num" style="font-size:14px;color:#22c55e">Gratuit · sans restriction</span>
+</div>
+<button class="pay-btn" id="payConfirm" style="background:#22c55e">Continuer</button>
+<button class="pay-skip" id="paySkip">Fermer</button>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
